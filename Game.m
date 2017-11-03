@@ -205,6 +205,6 @@ imshow([World{1,:};World{2,:};World{3,:};World{4,:};World{5,:};World{6,:};
 
 end
 fprintf('You win')
-fprintf('ffghjbnkmfvghjbkj')
+fprintf('llghjbnkmfvghjbkj')
 
 
