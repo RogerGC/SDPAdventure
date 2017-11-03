@@ -50,21 +50,21 @@ end
 for k = 1:Diffn*2
     a = Monste(1,k);
     b = Monste(2,k);
-    World{a,b} = Monster
+    World{a,b} = Monster;
 end
 
 for k = 1:(4-Diffn)
 a = Healt(k,1);
 b = Healt(k,2);
-    World{a,b} = Health
+    World{a,b} = Health;
 end
 %Plots monsters and health
 
 World{Swor(1),Swor(2)} = Sword;
 World{Shiel(1),Shiel(2)} = Shield;
 World{Boot(1),Boot(2)} = Boots;
-World{10,10} = Door
-World{1,1} = Player
+World{10,10} = Door;
+World{1,1} = Player;
 imshow([World{1,:};World{2,:};World{3,:};World{4,:};World{5,:};World{6,:};
   World{7,:};World{8,:};World{9,:};World{10,:}]);
 %Plots items and displays the world
@@ -89,7 +89,7 @@ end
 %Sets up player location and win conditions
 %Player movement beginning
 World{Play(1),Play(2)} = Blank;
-Pm = input('\nWhich direction do you want to move?','s');   
+Pm = input('\nWhich direction do you want to move?\n','s');   
 if Play(1) == 1 | Play(2) == 1
     if strcmp(Pm, 'w') & Play(1) == 1
         Play(1) = Play(1) + 1;
