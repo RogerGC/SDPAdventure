@@ -18,7 +18,6 @@ else
 end
 end
 fprintf('Use WASD to move.')
-% COMMENT
 %% player stats 
 
 Ph = 100; %Health
