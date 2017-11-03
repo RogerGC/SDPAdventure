@@ -172,26 +172,8 @@ if Boot(1) == Play(1) & Boot(2) == Play(2)
    Boot(1) = 10;
    Boot(2) = 10;
 end
-%When the player is at the same location as the non diffuculty dependent items, 
-%the items will disappear from the UI and the player stats will improve
-
-for k = 1:4-Diffn
-    if Play(1) == Healt(k,1) & Play(2) == Healt(k,2)
-        Ph = 100;
-        Healt(k,1) = 10;
-        Healt(k,2) = 10;
-    else
-        pause(0)
-    end
-end
-%Finds when the player is next to a health potion
-%If they are, the player's health is put to 100
-for k = 1:(4-Diffn)
-a = Healt(k,1);
-b = Healt(k,2);
-    World{a,b} = Health
-end
-%puts the potion at (10,10), effectivly putting it out of play
+%When the player is at the same location as the non diffuculty dependentitems, the items will
+%disappear from the UI and the player stats will improve
 
 World{Swor(1),Swor(2)} = Sword;
 World{Shiel(1),Shiel(2)} = Shield;

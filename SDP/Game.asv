@@ -177,9 +177,9 @@ end
 
 for k = 1:4-Diffn
     if Play(1) == Healt(k,1) & Play(2) == Healt(k,2)
-        Ph = 100;
-        Healt(k,1) = 10;
-        Healt(k,2) = 10;
+        Ph = 100
+        Healt(k,1) = 10
+        Healt(k,2) = 10
     else
         pause(0)
     end
