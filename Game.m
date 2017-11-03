@@ -4,10 +4,10 @@ fprintf('Welcome to The Elder Scrolls 6 Beta.')
 %Name = input('\nWhat do you want to name your character?\n', 's');
 %Q1 =  input('\You want your name to be %s?',Name)
 
-Diffn = 0;
+Diffn = 0; %Numerical difficulty
 while Diffn == 0
 Diffs = input('\nDo you want to play on Easy, Medium, or Hard?\n','s');
-Diffs = upper(Diffs);
+Diffs = upper(Diffs); %Capitalise String Difficulty
 if strcmp(Diffs, 'EASY')
     Diffn = 1;
 elseif strcmp(Diffs, 'MEDIUM')
@@ -28,32 +28,32 @@ Ps = 1; %Speed
 Pl = 1; %Level
 
 %% Spawners
+Monste = zeros(2,Diffn*2);
 for k = 1:Diffn*2
     for l = 1:2
     Monste(l,k)= randi(10);
     end
 end
+%Randomly generate coordinates for the monsters 
+%depending on difficulty level
 
-%Randomly generates coordinates for the monsters depending on difficulty
-%level
 Swor = [randi(10);randi(10)];
 Shiel = [randi(10);randi(10)];
 Boot = [randi(10);randi(10)];
 %Randomly generates coordinates for the items
-
+Healt = zeros(2,4-Diffn);
 for n = 1:4-Diffn
     for m = 1:2
         Healt(n,m) = randi(10);
     end
 end
-
 %Randomly generates coordinates for the health depending on the the
 %difficulty
 
 for k = 1:Diffn*2
     a = Monste(1,k);
     b = Monste(2,k);
-    World{a,b} = Monster;
+    World{a,b} = Monster; %#ok<*SAGROW>
 
 end
 
@@ -92,29 +92,30 @@ else
     WinCon(2) = 0;
 end
 %Sets up player location and win conditions
+
 %Player movement beginning
 World{Play(1),Play(2)} = Blank;
 Pm = input('\nWhich direction do you want to move?\n','s');   
-if Play(1) == 1 | Play(2) == 1
-    if strcmp(Pm, 'w') & Play(1) == 1
+if Play(1) == 1 || Play(2) == 1
+    if strcmp(Pm, 'w') && Play(1) == 1
         Play(1) = Play(1) + 1;
-    elseif strcmp(Pm, 'a') & Play(2) == 1
+    elseif strcmp(Pm, 'a') && Play(2) == 1
         Play(2) = Play(2) + 1;
     else
         pause(0)
     end
-elseif Play(1) ~= 1 & Play(2) ~= 1
+elseif Play(1) ~= 1 && Play(2) ~= 1
     pause(0)
 end
-if Play(1) == 10 | Play(2) == 10
-    if strcmp(Pm, 's') & Play(1) == 10
+if Play(1) == 10 || Play(2) == 10
+    if strcmp(Pm, 's') && Play(1) == 10
         Play(1) = Play(1) - 1;
-    elseif strcmp(Pm, 'd') & Play(2) == 10
+    elseif strcmp(Pm, 'd') && Play(2) == 10
         Play(2) = Play(2) - 1;
     else
         pause(0)
     end
-elseif Play(1) ~= 10 & Play(2) ~= 10
+elseif Play(1) ~= 10 && Play(2) ~= 10
     pause(0)
 end
 %Stops the player from leaving the board  
@@ -166,19 +167,19 @@ end
 %plots the new monsters
 
 
-if Swor(1) == Play(1) & Swor(2) == Play(2)
+if Swor(1) == Play(1) && Swor(2) == Play(2)
    Pa = Pa + 5;
    Swor(1) = 10;
    Swor(2) = 10;
    fprintf('\nIts dangerous to go alone, take this.')
    fprintf('\nYour attack has increased by 5')
 end
-if Shiel(1) == Play(1) & Shiel(2) == Play(2)
+if Shiel(1) == Play(1) && Shiel(2) == Play(2)
    Pd = Pd + 5;
    Shiel(1) = 10;
    Shiel(2) = 10;
 end
-if Boot(1) == Play(1) & Boot(2) == Play(2)
+if Boot(1) == Play(1) && Boot(2) == Play(2)
    Ps = Ps + 1;
    Boot(1) = 10;
    Boot(2) = 10;
@@ -187,7 +188,7 @@ end
 %the items will disappear from the UI and the player stats will improve
 
 for k = 1:4-Diffn
-    if Play(1) == Healt(k,1) & Play(2) == Healt(k,2)
+    if Play(1) == Healt(k,1) && Play(2) == Healt(k,2)
         Ph = 100;
         Healt(k,1) = 10;
         Healt(k,2) = 10;
