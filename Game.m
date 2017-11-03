@@ -4,46 +4,50 @@ fprintf('Welcome to The Elder Scrolls 6 Beta.')
 %Name = input('\nWhat do you want to name your character?\n', 's');
 %Q1 =  input('\You want your name to be %s?',Name)
 
-%Determines the difficulty of the game
 Diffn = 0;
 while Diffn == 0
 Diffs = input('\nDo you want to play on Easy, Medium, or Hard?\n','s');
-if strcmp(Diffs, 'Easy')
+Diffs = upper(Diffs);
+if strcmp(Diffs, 'EASY')
     Diffn = 1;
-elseif strcmp(Diffs, 'Medium')
+elseif strcmp(Diffs, 'MEDIUM')
     Diffn = 2;
-elseif strcmp(Diffs, 'Hard')
+elseif strcmp(Diffs, 'HARD')
     Diffn = 3;
 else 
-    disp('Error')
+    disp('\nJeez, can''t follow a simple direction?')
 end
 end
 fprintf('Use WASD to move.')
-
+% COMMENT
 %% player stats 
-Ph = 100;
-Pa = 1;
-Pd = 1;
-Ps = 1;
-Pl = 1;
-%Player Health, Attack, Defense, Speed, and Level
+
+Ph = 100; %Health
+Pa = 1; %Attack
+Pd = 1; %Defence
+Ps = 1; %Speed
+Pl = 1; %Level
+
 %% Spawners
 for k = 1:Diffn*2
     for l = 1:2
     Monste(l,k)= randi(10);
     end
 end
+
 %Randomly generates coordinates for the monsters depending on difficulty
 %level
 Swor = [randi(10);randi(10)];
 Shiel = [randi(10);randi(10)];
 Boot = [randi(10);randi(10)];
 %Randomly generates coordinates for the items
+
 for n = 1:4-Diffn
     for m = 1:2
         Healt(n,m) = randi(10);
     end
 end
+
 %Randomly generates coordinates for the health depending on the the
 %difficulty
 
@@ -51,11 +55,13 @@ for k = 1:Diffn*2
     a = Monste(1,k);
     b = Monste(2,k);
     World{a,b} = Monster;
+
 end
 
 for k = 1:(4-Diffn)
 a = Healt(k,1);
 b = Healt(k,2);
+
     World{a,b} = Health;
 end
 %Plots monsters and health
@@ -126,19 +132,23 @@ end
 %Moves the player's location
 World{Play(1),Play(2)} = Player;
 %plots the player
+
 %end player movement
 
 %monster movement Begin
 for k = 1:Diffn*2
     a = Monste(1,k);
     b = Monste(2,k);
+
     World{a,b} = Blank;
 end
 %replaces the monsters old locations with blank squares
 
+
 for k = 1:Diffn*2
     for l = 1:2
         if Monste(l,k) == 1
+
         Monste(l,k) = Monste(l,k) + (randi(2)-1);
         elseif Monste(l,k) == 10
         Monste(l,k) = Monste(l,k) + (randi(2)-2);
@@ -200,11 +210,12 @@ World{Shiel(1),Shiel(2)} = Shield;
 World{Boot(1),Boot(2)} = Boots;
 World{10,10} = Door;
 
+
 imshow([World{1,:};World{2,:};World{3,:};World{4,:};World{5,:};World{6,:};
   World{7,:};World{8,:};World{9,:};World{10,:}]);
 
 end
 fprintf('You win')
-fprintf('llghjbnkmfvghjbkj')
+
 
 
