@@ -88,7 +88,7 @@ else
 end
 %Sets up player location and win conditions
 %Player movement beginning
-World{Play(1),Play(2)} = Blank
+World{Play(1),Play(2)} = Blank;
 Pm = input('\nWhich direction do you want to move?','s');   
 if Play(1) == 1 | Play(2) == 1
     if strcmp(Pm, 'w') & Play(1) == 1
@@ -124,7 +124,7 @@ end
     end
 
 %Moves the player's location
-World{Play(1),Play(2)} = Player
+World{Play(1),Play(2)} = Player;
 %plots the player
 %end player movement
 
@@ -132,18 +132,18 @@ World{Play(1),Play(2)} = Player
 for k = 1:Diffn*2
     a = Monste(1,k);
     b = Monste(2,k);
-    World{a,b} = Blank
+    World{a,b} = Blank;
 end
 %replaces the monsters old locations with blank squares
 
 for k = 1:Diffn*2
     for l = 1:2
         if Monste(l,k) == 1
-        Monste(l,k) = Monste(l,k) + (randi(2)-1)
+        Monste(l,k) = Monste(l,k) + (randi(2)-1);
         elseif Monste(l,k) == 10
-        Monste(l,k) = Monste(l,k) + (randi(2)-2)
+        Monste(l,k) = Monste(l,k) + (randi(2)-2);
         else
-        Monste(l,k) = Monste(l,k) + (randi(3)-2)
+        Monste(l,k) = Monste(l,k) + (randi(3)-2);
         end
     end
 end
@@ -152,7 +152,7 @@ end
 for k = 1:Diffn*2
     a = Monste(1,k);
     b = Monste(2,k);
-    World{a,b} = Monster
+    World{a,b} = Monster;
 end
 %plots the new monsters
 
@@ -189,7 +189,7 @@ end
 for k = 1:(4-Diffn)
 a = Healt(k,1);
 b = Healt(k,2);
-    World{a,b} = Health
+    World{a,b} = Health;
 end
 %puts the potion at (10,10), effectivly putting it out of play
 
