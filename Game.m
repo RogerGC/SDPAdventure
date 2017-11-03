@@ -14,7 +14,7 @@ elseif strcmp(Diffs, 'MEDIUM')
 elseif strcmp(Diffs, 'HARD')
     Diffn = 3;
 else 
-    disp('Jeez, can''t follow a simple direction?')
+    disp('\nJeez, can''t follow a simple direction?')
 end
 end
 fprintf('Use WASD to move.')
