@@ -161,6 +161,8 @@ if Swor(1) == Play(1) & Swor(2) == Play(2)
    Pa = Pa + 5;
    Swor(1) = 10;
    Swor(2) = 10;
+   fprintf('\nIts dangerous to go alone, take this.')
+   fprintf('\nYour attack has increased by 5')
 end
 if Shiel(1) == Play(1) & Shiel(2) == Play(2)
    Pd = Pd + 5;
