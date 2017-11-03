@@ -4,49 +4,46 @@ fprintf('Welcome to The Elder Scrolls 6 Beta.')
 %Name = input('\nWhat do you want to name your character?\n', 's');
 %Q1 =  input('\You want your name to be %s?',Name)
 
+%Determines the difficulty of the game
 Diffn = 0;
 while Diffn == 0
 Diffs = input('\nDo you want to play on Easy, Medium, or Hard?\n','s');
-Diffs = upper(Diffs);
-if strcmp(Diffs, 'EASY')
+if strcmp(Diffs, 'Easy')
     Diffn = 1;
-elseif strcmp(Diffs, 'MEDIUM')
+elseif strcmp(Diffs, 'Medium')
     Diffn = 2;
-elseif strcmp(Diffs, 'HARD')
+elseif strcmp(Diffs, 'Hard')
     Diffn = 3;
 else 
-    disp('\nJeez, can''t follow a simple direction?')
+    disp('Error')
 end
 end
 fprintf('Use WASD to move.')
+
 %% player stats 
-
-Ph = 100; %Health
-Pa = 1; %Attack
-Pd = 1; %Defence
-Ps = 1; %Speed
-Pl = 1; %Level
-
+Ph = 100;
+Pa = 1;
+Pd = 1;
+Ps = 1;
+Pl = 1;
+%Player Health, Attack, Defense, Speed, and Level
 %% Spawners
 for k = 1:Diffn*2
     for l = 1:2
     Monste(l,k)= randi(10);
     end
 end
-
 %Randomly generates coordinates for the monsters depending on difficulty
 %level
 Swor = [randi(10);randi(10)];
 Shiel = [randi(10);randi(10)];
 Boot = [randi(10);randi(10)];
 %Randomly generates coordinates for the items
-
 for n = 1:4-Diffn
     for m = 1:2
         Healt(n,m) = randi(10);
     end
 end
-
 %Randomly generates coordinates for the health depending on the the
 %difficulty
 
@@ -54,13 +51,11 @@ for k = 1:Diffn*2
     a = Monste(1,k);
     b = Monste(2,k);
     World{a,b} = Monster;
-
 end
 
 for k = 1:(4-Diffn)
 a = Healt(k,1);
 b = Healt(k,2);
-
     World{a,b} = Health;
 end
 %Plots monsters and health
@@ -94,7 +89,7 @@ end
 %Sets up player location and win conditions
 %Player movement beginning
 World{Play(1),Play(2)} = Blank;
-Pm = input('\nWhich direction do you want to move?\n','s');   
+Pm = input('\nWhich direction do you want to move?','s');   
 if Play(1) == 1 | Play(2) == 1
     if strcmp(Pm, 'w') & Play(1) == 1
         Play(1) = Play(1) + 1;
@@ -131,23 +126,19 @@ end
 %Moves the player's location
 World{Play(1),Play(2)} = Player;
 %plots the player
-
 %end player movement
 
 %monster movement Begin
 for k = 1:Diffn*2
     a = Monste(1,k);
     b = Monste(2,k);
-
     World{a,b} = Blank;
 end
 %replaces the monsters old locations with blank squares
 
-
 for k = 1:Diffn*2
     for l = 1:2
         if Monste(l,k) == 1
-
         Monste(l,k) = Monste(l,k) + (randi(2)-1);
         elseif Monste(l,k) == 10
         Monste(l,k) = Monste(l,k) + (randi(2)-2);
@@ -170,8 +161,6 @@ if Swor(1) == Play(1) & Swor(2) == Play(2)
    Pa = Pa + 5;
    Swor(1) = 10;
    Swor(2) = 10;
-   fprintf('\nIts dangerous to go alone, take this.')
-   fprintf('\nYour attack has increased by 5')
 end
 if Shiel(1) == Play(1) & Shiel(2) == Play(2)
    Pd = Pd + 5;
@@ -204,14 +193,21 @@ b = Healt(k,2);
 end
 %puts the potion at (10,10), effectivly putting it out of play
 
+for k = 1:Diffn*2
+    if abs(Play(1) - Monste(1,k)) <= 1 | abs(Play(2) - Monste(2,k)) <= 1
+        fprintf('you dead man')
+    else
+        pause(0)
+    end
+end
+
 World{Swor(1),Swor(2)} = Sword;
 World{Shiel(1),Shiel(2)} = Shield;
 World{Boot(1),Boot(2)} = Boots;
 World{10,10} = Door;
 
-
 imshow([World{1,:};World{2,:};World{3,:};World{4,:};World{5,:};World{6,:};
-  World{7,:};World{8,:};World{9,:};World{10,:}]);
+  World{7,:};World{8,:};World{9,:};World{10,:}])
 
 end
 fprintf('You win')
